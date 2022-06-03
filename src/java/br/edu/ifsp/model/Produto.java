@@ -16,7 +16,7 @@ public class Produto {
  
     private int codigo;
     
-    @NotEmpty
+    @NotEmpty()
     //@Size(min = 3)
     private String nome;
 
