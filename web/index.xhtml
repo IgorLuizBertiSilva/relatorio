@@ -9,10 +9,13 @@
     <h:body>
         
         <h:form>
+            <p:commandButton value="US" action="#{localeController.setLocalenUS()}" update="@form"/>
+            <p:commandButton value="BR" action="#{localeController.setLocalptBR()}" update="@form"/>
+            <h1><h:outputText value="#{bundle.ProdutoTitulo}"/> </h1>
             
-            <p:commandButton value="Relatorio">
-                <p:fileDownload value="#{contaCorrenteController.gerarRelatorioContaCorrente()}"/>
-            </p:commandButton>
+            <h:outputLabel value="#{bundle.ProdutoLabel_codigo} :" for="codigo"/>
+            
+            <p:inputText id="codigo"/>
             
         </h:form>
         
