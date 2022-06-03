@@ -47,7 +47,7 @@ public class ContaCorrenteController implements Serializable{
         InputStream is = getClass().getResourceAsStream("/br/edu/ifsp/relatorio/relatorio-contas.jasper");
         
         
-        return Relatorio.gerar(is, null, dataSource);
+        return Relatorio.gerar(is, null, dataSource, "-conta-corrente");
         
     }
 

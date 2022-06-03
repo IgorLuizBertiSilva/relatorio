@@ -23,7 +23,7 @@ import org.primefaces.model.DefaultStreamedContent;
  */
 public class Relatorio {
     
-    public static DefaultStreamedContent gerar(InputStream is, Map<String, Object> params, JRBeanCollectionDataSource dataSource){
+    public static DefaultStreamedContent gerar(InputStream is, Map<String, Object> params, JRBeanCollectionDataSource dataSource, String nome){
         
         
         try {
@@ -41,7 +41,7 @@ public class Relatorio {
             
             
             return DefaultStreamedContent.builder()
-                .name("relatorio-conta-corrente.pdf")
+                .name("relatorio-conta-corrente" + nome +"pdf")
                 .contentType("application/pdf")
                 .stream(() -> new ByteArrayInputStream(saida.toByteArray()))
                 .build();
