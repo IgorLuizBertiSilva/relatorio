@@ -7,21 +7,26 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+
         <h:form>
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+            <br/>
             <p:commandButton value="US" action="#{localeController.setLocalenUS()}" update="@form"/>
             <p:commandButton value="BR" action="#{localeController.setLocalptBR()}" update="@form"/>
-            
+
             <h1><h:outputText value="#{bundle.ProdutoTitulo}"/> </h1>
-            
+
             <h:outputLabel value="#{bundle.ProdutoLabel_codigo} :" for="codigo"/>
             <p:inputText id="codigo" value="#{produtoController.produto.codigo}"/>
-            
+
             <h:outputLabel value="#{bundle.ProdutoNome} :" for="nome"/>
             <p:inputText id="nome" value="#{produtoController.produto.nome}"/>
-            
+
             <p:commandButton value="#{bundle.Adicionar}" action="#{produtoController.cadastrar()}"/>
-            
+
         </h:form>
         <br/>
         <br/>
@@ -29,14 +34,14 @@
         <br/>
         <br/>
         <hr/>
-         <h:form>
+        <h:form>
 
             <p:commandButton value="Relatorio">
                 <p:fileDownload value="#{contaCorrenteController.gerarRelatorioContaCorrente()}"/>
             </p:commandButton>
 
         </h:form>
-        
+
     </h:body>
 </html>
 

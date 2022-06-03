@@ -4,6 +4,10 @@
  */
 package br.edu.ifsp.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+
 /**
  *
  * @author aluno
@@ -12,6 +16,8 @@ public class Produto {
  
     private int codigo;
     
+    @NotEmpty
+    //@Size(min = 3)
     private String nome;
 
     public int getCodigo() {
