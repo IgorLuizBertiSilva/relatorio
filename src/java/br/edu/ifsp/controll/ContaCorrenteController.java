@@ -5,6 +5,7 @@
 package br.edu.ifsp.controll;
 
 import br.edu.ifsp.model.ContaCorrente;
+import br.edu.ifsp.util.Relatorio;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -46,33 +47,7 @@ public class ContaCorrenteController implements Serializable{
         InputStream is = getClass().getResourceAsStream("/br/edu/ifsp/relatorio/relatorio-contas.jasper");
         
         
-        // da para separar em outra classe
-        try {
-            JasperPrint jp = JasperFillManager.fillReport(is, null, dataSource);
-            
-            JRPdfExporter export = new JRPdfExporter();
-            
-            export.setExporterInput(new SimpleExporterInput(jp));
-            
-            ByteArrayOutputStream saida = new ByteArrayOutputStream();
-            
-            export.setExporterOutput(new SimpleOutputStreamExporterOutput(saida));
-            
-            export.exportReport();
-            
-            
-            return DefaultStreamedContent.builder()
-                .name("relatorio-conta-corrente.pdf")
-                .contentType("application/pdf")
-                .stream(() -> new ByteArrayInputStream(saida.toByteArray()))
-                .build();
-            
-            
-        } catch (JRException ex) {
-            ex.printStackTrace();
-            System.out.println("Erro ao gerar o relatorio de conta corrente");
-        }
-        return null;
+        return Relatorio.gerar(is, null, dataSource);
         
     }
 
